@@ -30,8 +30,8 @@ def get_transform(link, tf_listener):
         link (string): name of the link to get transform of
     """
     try:
-        t = tf_listener.getLatestCommonTime("base", link)
-        (trans, rot) = tf_listener.lookupTransform('base', link, t)
+        t = tf_listener.getLatestCommonTime("base_link", link)
+        (trans, rot) = tf_listener.lookupTransform('base_link', link, t)
     except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException, tf.Exception) as e:
         print e
         return
@@ -40,7 +40,7 @@ def get_transform(link, tf_listener):
 
 def main():
     # initialize the ROS node
-    rospy.init_node("unityNode", anonymous=False)
+    rospy.init_node("ros_reality_bridge", anonymous=False)
 
     # set up the publisher
     pub = rospy.Publisher("ros_unity", String, queue_size=0)
