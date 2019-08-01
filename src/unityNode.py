@@ -40,7 +40,7 @@ def get_transform(link, tf_listener):
 
 def main():
     # initialize the ROS node
-    rospy.init_node("ros_reality_bridge", anonymous=False)
+    rospy.init_node("unity_node", anonymous=False)
 
     # set up the publisher
     pub = rospy.Publisher("ros_unity", String, queue_size=0)
